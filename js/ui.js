@@ -226,7 +226,7 @@ const SharePlateUI = {
     // Smart Auto-Hide Top Navigation Bar on Scroll (Mobile, Tablet & Desktop)
     // ------------------------------------------------------------------------
     const navbar = document.querySelector('.navbar');
-    if (navbar && !navbar.dataset.autohideBound) {
+    if (navbar && !navbar.dataset.autohideBound && navbar.getAttribute('data-no-autohide') !== 'true') {
       navbar.dataset.autohideBound = 'true';
       let lastScrollY = window.pageYOffset || document.documentElement.scrollTop;
       let ticking = false;

@@ -1,9 +1,22 @@
 /* ==========================================================================
-   SharePlate Dashboard & Forms Styles
+   FILE: dashboard.css
+   PURPOSE: Dashboard Panels, Forms, Data Tables, & Filter Toolbars
+   COVERS: Top Header Bar, KPI Summary Cards, Form Controls, Dropzone,
+           Filter Search Toolbars, Responsive Data Tables
+   HOW TO FIND IN VIVA:
+     - Dashboard Title & User Role   -> search ".dashboard-topbar"
+     - Role Badges (Donor/NGO/Vol)   -> search ".role-badge"
+     - KPI Metric Cards (Meals saved)-> search ".kpi-grid"
+     - Form Inputs & Validation      -> search ".form-control"
+     - Switch Toggle (Wedding Mode)  -> search ".switch-wrapper"
+     - Photo Upload Dropzone Box     -> search ".dropzone-box"
+     - Search & Filter Category Pills-> search ".filter-toolbar"
+     - Table Records (Claims/Admin)  -> search ".data-table"
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   Dashboard Header & Sub-Bar
+   1. DASHBOARD HEADER & ROLE SUB-BAR
+   Displays portal name, current user role badge, and quick action links.
    -------------------------------------------------------------------------- */
 .dashboard-topbar {
   background: var(--color-surface);
@@ -39,6 +52,7 @@
   color: var(--color-text-secondary);
 }
 
+/* User Role Badges */
 .role-badge {
   padding: 0.2rem 0.65rem;
   font-size: 11px;
@@ -48,13 +62,14 @@
   border-radius: var(--radius-full);
 }
 
-.role-badge-donor { background: #FEF3C7; color: #B45309; }
-.role-badge-receiver { background: #E0F2FE; color: #0369A1; }
+.role-badge-donor     { background: #FEF3C7; color: #B45309; }
+.role-badge-receiver  { background: #E0F2FE; color: #0369A1; }
 .role-badge-volunteer { background: #DCFCE7; color: #15803D; }
-.role-badge-admin { background: #F3E8FF; color: #7E22CE; }
+.role-badge-admin     { background: #F3E8FF; color: #7E22CE; }
 
 /* --------------------------------------------------------------------------
-   Stat KPI Grid
+   2. STAT KPI GRID
+   Summary metric blocks showing active claims, food rescued, and volunteers.
    -------------------------------------------------------------------------- */
 .kpi-grid {
   display: grid;
@@ -91,10 +106,10 @@
   font-size: 1.4rem;
 }
 
-.kpi-icon-green { background: var(--color-primary-surface); color: var(--color-primary); }
-.kpi-icon-saffron { background: var(--color-saffron-surface); color: var(--color-saffron-dark); }
+.kpi-icon-green      { background: var(--color-primary-surface); color: var(--color-primary); }
+.kpi-icon-saffron    { background: var(--color-saffron-surface); color: var(--color-saffron-dark); }
 .kpi-icon-terracotta { background: var(--color-terracotta-surface); color: var(--color-terracotta); }
-.kpi-icon-blue { background: #E0F2FE; color: #0284C7; }
+.kpi-icon-blue       { background: #E0F2FE; color: #0284C7; }
 
 .kpi-value {
   font-size: var(--font-size-2xl);
@@ -111,7 +126,8 @@
 }
 
 /* --------------------------------------------------------------------------
-   Form Styles & Inputs
+   3. FORM STYLES & INPUT CONTROLS
+   Post food forms, profile updates, and login inputs with active focus rings.
    -------------------------------------------------------------------------- */
 .form-card {
   background: var(--color-surface);
@@ -179,7 +195,7 @@
   display: block;
 }
 
-/* Switch Toggle (e.g. Wedding Mode) */
+/* Switch Toggle (e.g., Banquet / Wedding Mode) */
 .switch-wrapper {
   display: flex;
   align-items: center;
@@ -294,7 +310,8 @@
 }
 
 /* --------------------------------------------------------------------------
-   Feed Filters & Search Toolbar
+   4. FEED FILTERS & SEARCH TOOLBAR
+   Keyword search and category pill selector for Surplus Food Feed.
    -------------------------------------------------------------------------- */
 .filter-toolbar {
   background: var(--color-surface);
@@ -363,7 +380,8 @@
 }
 
 /* --------------------------------------------------------------------------
-   Data Tables (Admin & Claims History)
+   5. DATA TABLES (Admin Management & Receiver Claims History)
+   Clean, responsive tables with horizontal scroll wrap on mobile.
    -------------------------------------------------------------------------- */
 .table-responsive {
   width: 100%;
@@ -398,21 +416,4 @@
 
 .data-table tbody tr:hover {
   background: var(--color-surface-hover);
-}
-
-/* --------------------------------------------------------------------------
-   Map Containers
-   -------------------------------------------------------------------------- */
-.map-canvas {
-  width: 100%;
-  height: 480px;
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--color-border);
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  z-index: 10;
-}
-
-.map-preview-small {
-  height: 340px;
 }

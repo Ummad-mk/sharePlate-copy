@@ -3,16 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Food Rescue Map - SharePlate</title>
-  <meta name="description" content="Locate nearby surplus food pins, banquets, and distribution hubs on an interactive OpenStreetMap.">
+  <title>Food Map - SharePlate</title>
+  <meta name="description" content="Interactive food rescue map — coming soon to SharePlate.">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Leaflet CSS -->
-  <link rel="stylesheet" href="../lib/leaflet.css">
 
   <!-- Favicon / Brand Icons -->
   <link rel="icon" type="image/x-icon" href="../assests/shareplate_logo.ico">
@@ -20,6 +17,70 @@
   <link rel="apple-touch-icon" href="../assests/shareplate_logo.png">
 
   <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .coming-soon-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 60vh;
+      padding: var(--space-2xl) var(--space-md);
+      text-align: center;
+    }
+    .coming-soon-icon {
+      font-size: 5rem;
+      margin-bottom: var(--space-lg);
+      animation: floatPin 3s ease-in-out infinite;
+    }
+    @keyframes floatPin {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+    .coming-soon-badge {
+      display: inline-block;
+      background: var(--color-primary-surface, #FFF3E0);
+      color: var(--color-primary, #E67E22);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 99px;
+      margin-bottom: var(--space-sm);
+    }
+    .coming-soon-title {
+      font-family: var(--font-heading, 'Fraunces', serif);
+      font-size: clamp(1.8rem, 5vw, 2.6rem);
+      font-weight: 800;
+      color: var(--color-text-main);
+      margin-bottom: var(--space-sm);
+    }
+    .coming-soon-desc {
+      font-size: var(--font-size-base, 1rem);
+      color: var(--color-text-secondary);
+      max-width: 460px;
+      line-height: 1.7;
+      margin-bottom: var(--space-xl);
+    }
+    .coming-soon-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      justify-content: center;
+      margin-bottom: var(--space-xl);
+    }
+    .coming-soon-feature-pill {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 99px;
+      padding: 6px 16px;
+      font-size: 13px;
+      color: var(--color-text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+  </style>
 </head>
 <body class="dashboard-body">
 
@@ -68,44 +129,23 @@
   </header>
 
   <main class="dashboard-main">
-    <div class="container" style="padding-top:var(--space-md);">
-      <!-- Map Controls & Geolocation Toolbar -->
-      <div class="card" style="padding:var(--space-md); margin-bottom:var(--space-md); border-radius:var(--radius-xl);">
-        <div class="flex-between" style="flex-wrap:wrap; gap:var(--space-sm);">
-          <div style="display:flex; align-items:center; gap:var(--space-sm); flex-wrap:wrap;">
-            <button id="btn-use-location" class="btn btn-green btn-sm">
-              📍 Use My Location
-            </button>
-            <div style="font-size:var(--font-size-xs); color:var(--color-text-secondary);">
-              Find hot banquet meals within 5 km
-            </div>
-          </div>
+    <div class="container">
+      <div class="coming-soon-wrap">
+        <div class="coming-soon-icon">🗺️</div>
+        <span class="coming-soon-badge">Coming Soon</span>
+        <h1 class="coming-soon-title">Food Rescue Map</h1>
+        <p class="coming-soon-desc">
+          We're building an interactive live map to help you locate nearby surplus food pins, banquet distributions, and volunteer pickup hubs — all in real time.
+        </p>
 
-          <!-- Fallback Area Search Form -->
-          <form id="area-search-form" style="display:flex; gap:6px; flex:1; max-width:340px;">
-            <input type="text" id="area-search-input" class="form-control" style="padding:0.35rem 0.75rem; font-size:12px;" placeholder="Search area (e.g. Gulberg, MM Alam, DHA, Johar Town)...">
-            <button type="submit" class="btn btn-outline btn-sm">Search</button>
-          </form>
+        <div class="coming-soon-features">
+          <span class="coming-soon-feature-pill">📍 Live food pin clusters</span>
+          <span class="coming-soon-feature-pill">📏 Distance-based radius search</span>
+          <span class="coming-soon-feature-pill">🚴 Volunteer route overlay</span>
+          <span class="coming-soon-feature-pill">🔵 GPS "use my location"</span>
         </div>
-      </div>
 
-      <!-- Map Canvas -->
-      <div id="shareplate-map" class="map-canvas" style="height:550px;" role="application" aria-label="Interactive Surplus Food Map"></div>
-
-      <!-- Legend & Map Tips -->
-      <div class="card" style="margin-top:var(--space-md); padding:var(--space-md); background:var(--color-surface);">
-        <div class="flex-between" style="flex-wrap:wrap; gap:var(--space-xs); font-size:var(--font-size-xs);">
-          <div style="display:flex; gap:var(--space-md); align-items:center; flex-wrap:wrap;">
-            <span style="font-weight:700; color:var(--color-text-main);">Map Legend:</span>
-            <span>🍲 Gold: Cooked Banquet Meals</span>
-            <span>🥖 Terracotta: Fresh Bakery Surplus</span>
-            <span>📦 Green: Claimed / Volunteer Dispatched</span>
-            <span>🔵 Blue dot: Your Position</span>
-          </div>
-          <div style="color:var(--color-text-muted);">
-            © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a>
-          </div>
-        </div>
+        <a href="feed.html" class="btn btn-primary btn-md">Browse Surplus Feed →</a>
       </div>
     </div>
   </main>
@@ -147,16 +187,12 @@
     </a>
   </nav>
 
-  <!-- Leaflet & Scripts -->
-  <script src="../lib/leaflet.js"></script>
   <script src="../js/data.js"></script>
   <script src="../js/auth.js"></script>
   <script src="../js/ui.js"></script>
-  <script src="../js/map.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       SharePlateAuth.requireAuth(['receiver']);
-      SharePlateMap.init('shareplate-map', { zoom: 12 });
     });
   </script>
 </body>

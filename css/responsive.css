@@ -1,6 +1,14 @@
 /* ==========================================================================
-   SharePlate Mobile-First Responsive Optimization (360px, 480px, 768px, 1280px)
-   Eliminates horizontal overflows, squished nav items, and optimizes drawer
+   FILE: responsive.css
+   PURPOSE: Mobile-First Responsive Breakpoints & Device Adaptations
+   COVERS: Breakpoints (360px, 480px, 768px, 1024px, 1280px), Touch Targets,
+           Drawer Transitions, Bottom Tab Bar Visibility, Overflow Fixes
+   HOW TO FIND IN VIVA:
+     - Mobile Global (<768px)        -> search "@media (max-width: 768px)"
+     - Small Phones (<480px)         -> search "@media (max-width: 480px)"
+     - Tablet (<991px / 1024px)      -> search "@media (max-width: 991px)"
+     - Desktop Layout (1280px+)      -> search "@media (min-width: 1280px)"
+     - Overflow Containment (clip)   -> search "overflow-x: clip"
    ========================================================================== */
 
 /* Universal horizontal containment (uses clip so sticky navbar works reliably) */
@@ -320,10 +328,6 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, button {
 
   .hero-section {
     padding-block: var(--space-3xl);
-  }
-
-  .map-canvas {
-    height: 600px;
   }
 }
 

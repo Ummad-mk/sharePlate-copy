@@ -7,7 +7,6 @@ function initMainPage() {
   initLiveFoodStrip();
   initImpactCounters();
   initStoriesCarousel();
-  initHomeMapPreview();
 }
 
 if (document.readyState === 'loading') {
@@ -147,57 +146,4 @@ function initStoriesCarousel() {
     currentIndex = (currentIndex + 1) % totalSlides;
     updateCarousel();
   }, 7000);
-}
-
-/* --------------------------------------------------------------------------
-   Home Map Preview
-   -------------------------------------------------------------------------- */
-function initHomeMapPreview() {
-  const mapElement = document.getElementById('home-map-preview');
-  if (!mapElement) return;
-
-  let retries = 0;
-  const maxRetries = 35; // wait up to 3.5s for Leaflet CDN if delayed
-
-  const attemptInit = () => {
-    if (typeof L !== 'undefined' && typeof SharePlateMap !== 'undefined') {
-      SharePlateMap.init('home-map-preview', { isMini: true, zoom: 12 });
-
-      // Invalidate size when user scrolls map into view
-      if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting && SharePlateMap.mapInstance) {
-              SharePlateMap.mapInstance.invalidateSize();
-            }
-          });
-        }, { threshold: 0.1 });
-        observer.observe(mapElement);
-      }
-    } else if (retries < maxRetries) {
-      retries++;
-      setTimeout(attemptInit, 100);
-    } else {
-      // Offline / blocked CDN fallback UI
-      renderMapFallback(mapElement);
-    }
-  };
-
-  attemptInit();
-}
-
-function renderMapFallback(container) {
-  const donations = (typeof SharePlateData !== 'undefined' ? SharePlateData.getDonations() : []).slice(0, 4);
-  container.innerHTML = `
-    <div style="height:100%; display:flex; flex-direction:column; justify-content:center; align-items:center; background:var(--color-surface); padding:var(--space-lg); text-align:center;">
-      <div style="font-size:2.2rem; margin-bottom:var(--space-xs);">📍</div>
-      <h3 style="font-size:var(--font-size-md); margin-bottom:var(--space-xs); color:var(--color-primary);">Lahore Food Rescue Hub</h3>
-      <p style="font-size:var(--font-size-xs); color:var(--color-text-secondary); max-width:420px; margin-bottom:var(--space-md);">
-        ${donations.length}+ active donation pins ready for pickup across Gulberg, DHA, Johar Town, and Model Town.
-      </p>
-      <div style="display:flex; flex-wrap:wrap; gap:var(--space-xs); justify-content:center;">
-        ${donations.map(d => `<span class="badge badge-safe" style="font-size:11px;">${d.title.split(' ')[0]} ${d.title.split(' ')[1]} (${d.distance})</span>`).join('')}
-      </div>
-    </div>
-  `;
 }

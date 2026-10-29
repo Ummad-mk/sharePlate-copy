@@ -16,8 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Leaflet Map CSS -->
-  <link rel="stylesheet" href="../lib/leaflet.css">
+
 
   <link rel="stylesheet" href="../css/style.css">
   <style>
@@ -166,9 +165,6 @@
           <button id="toggle-online-btn" class="btn btn-outline btn-sm" style="border-color:var(--color-primary); color:var(--color-primary);">
             🟢 Active for Dispatches
           </button>
-          <a href="#active-route" class="btn btn-primary btn-sm">
-            📍 Jump to Route Map
-          </a>
         </div>
       </div>
 
@@ -259,8 +255,12 @@
                 </div>
               </div>
 
-              <!-- Route Map Container -->
-              <div id="active-route" style="height:240px; border-radius:var(--radius-md); overflow:hidden; border:1px solid var(--color-border);"></div>
+              <!-- Route Map - Coming Soon -->
+              <div id="active-route" style="height:240px; border-radius:var(--radius-md); overflow:hidden; border:1px dashed var(--color-border); background:var(--color-bg-alt); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;">
+                <span style="font-size:2rem;">🗺️</span>
+                <span style="font-size:11px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--color-primary);">Map — Coming Soon</span>
+                <span style="font-size:12px; color:var(--color-text-secondary); text-align:center; max-width:220px;">Live route navigation will be available here in a future update.</span>
+              </div>
             </div>
           </div>
         </div>
@@ -334,8 +334,7 @@
     </a>
   </nav>
 
-  <!-- Leaflet Map JS -->
-  <script src="../lib/leaflet.js"></script>
+
   <script src="../js/data.js"></script>
   <script src="../js/auth.js"></script>
   <script src="../js/ui.js"></script>
@@ -353,7 +352,6 @@
 
       // Render Dispatches
       renderVolunteerDispatches();
-      initRouteMap();
 
       // Setup OTP Handover modal
       const otpDialog = document.getElementById('delivery-otp-dialog');
@@ -464,51 +462,7 @@
       setTimeout(() => location.reload(), 1000);
     };
 
-    function initRouteMap() {
-      const mapEl = document.getElementById('active-route');
-      if (!mapEl || !window.L) return;
 
-      const map = L.map('active-route', {
-        center: [31.4900, 74.3200],
-        zoom: 13,
-        zoomControl: false
-      });
-
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; OpenStreetMap'
-      }).addTo(map);
-
-      // Pickup Marker (Arfa Tower)
-      const pickupIcon = L.divIcon({
-        className: 'custom-map-marker',
-        html: `<div style="background:#f59e0b;color:#16201B;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;box-shadow:0 2px 6px rgba(0,0,0,0.3);border:2px solid #fff;">1</div>`,
-        iconSize: [28, 28]
-      });
-      L.marker([31.4755, 74.3420], { icon: pickupIcon }).addTo(map).bindPopup('<b>Pickup</b><br>Arfa Tower Tech Cafeteria');
-
-      // Dropoff Marker (Edhi Home)
-      const dropoffIcon = L.divIcon({
-        className: 'custom-map-marker',
-        html: `<div style="background:#1f5c4a;color:#fff;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;box-shadow:0 2px 6px rgba(0,0,0,0.3);border:2px solid #fff;">2</div>`,
-        iconSize: [28, 28]
-      });
-      L.marker([31.5050, 74.2980], { icon: dropoffIcon }).addTo(map).bindPopup('<b>Dropoff</b><br>Edhi Foundation Shelter Home');
-
-      // Route line
-      const routeLine = L.polyline([
-        [31.4755, 74.3420],
-        [31.4880, 74.3250],
-        [31.4980, 74.3120],
-        [31.5050, 74.2980]
-      ], {
-        color: '#1f5c4a',
-        weight: 4,
-        dashArray: '6, 8',
-        opacity: 0.85
-      }).addTo(map);
-
-      map.fitBounds(routeLine.getBounds(), { padding: [20, 20] });
-    }
   </script>
 </body>
 </html>
