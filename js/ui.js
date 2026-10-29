@@ -1,54 +1,18 @@
 /**
  * SharePlate UI Utilities
- * Theme switching, toasts, modals, notifications dropdown, and mobile navigation
+ * Toasts, modals, notifications dropdown, and mobile navigation
  */
 
 const SharePlateUI = {
   _initialized: false,
 
   init() {
-    // Guard against double initialisation (some pages also call init() manually),
-    // which bound every click handler twice: hamburger/theme/bell toggled open
-    // and immediately closed again, so they appeared to do nothing.
+    // Guard against double initialisation
     if (this._initialized) return;
     this._initialized = true;
-    this.initTheme();
     this.initMobileNav();
     this.initNotifications();
     this.initModals();
-  },
-
-  /* ------------------------------------------------------------------------
-     Theme Management (Light / Dark Mode)
-     ------------------------------------------------------------------------ */
-  initTheme() {
-    const savedTheme = localStorage.getItem('shareplate_theme_v1') || 'light';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    this.updateThemeToggleIcons(savedTheme);
-
-    const toggleBtns = document.querySelectorAll('.theme-toggle-btn');
-    toggleBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const current = document.documentElement.getAttribute('data-theme');
-        const next = current === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', next);
-        localStorage.setItem('shareplate_theme_v1', next);
-        this.updateThemeToggleIcons(next);
-        this.toast(`Switched to ${next} theme`, 'info', 2000);
-      });
-    });
-  },
-
-  updateThemeToggleIcons(theme) {
-    const sunIcons = document.querySelectorAll('.theme-icon-sun');
-    const moonIcons = document.querySelectorAll('.theme-icon-moon');
-    if (theme === 'dark') {
-      sunIcons.forEach(i => i.style.display = 'inline-block');
-      moonIcons.forEach(i => i.style.display = 'none');
-    } else {
-      sunIcons.forEach(i => i.style.display = 'none');
-      moonIcons.forEach(i => i.style.display = 'inline-block');
-    }
   },
 
   /* ------------------------------------------------------------------------

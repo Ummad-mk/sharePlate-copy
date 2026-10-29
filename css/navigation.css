@@ -29,10 +29,6 @@
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
 }
 
-[data-theme="dark"] .navbar {
-  background: rgba(18, 24, 21, 0.94);
-}
-
 .nav-container {
   display: flex;
   align-items: center;
@@ -49,10 +45,6 @@
   font-weight: 800;
   color: var(--color-primary);
   text-decoration: none;
-}
-
-[data-theme="dark"] .brand-logo {
-  color: #FFFFFF;
 }
 
 .brand-logo-img,

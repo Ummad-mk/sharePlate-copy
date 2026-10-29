@@ -5,7 +5,7 @@
    This master stylesheet imports all specialized modules in strict cascading
    order (from most generic to most specific):
 
-   1. variables.css  -> Design tokens (colors, typography, radii, dark mode)
+   1. variables.css  -> Design tokens (colors, typography, radii, shadows)
    2. base.css       -> CSS reset, global HTML element defaults, grids & layout
    3. navigation.css -> Top sticky navbar, mobile drawer, bottom tab bar
    4. components.css -> Buttons, cards, badges, countdown chips, modals, toasts

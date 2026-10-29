@@ -8,7 +8,6 @@ const STORAGE_KEYS = {
   CLAIMS: 'shareplate_claims_v2',
   TASKS: 'shareplate_tasks_v2',
   USER: 'shareplate_current_user_v2',
-  THEME: 'shareplate_theme_v1',
   NOTIFICATIONS: 'shareplate_notifications_v2',
   IMPACT: 'shareplate_impact_stats_v2',
   REPORTS: 'shareplate_reports_v2'
