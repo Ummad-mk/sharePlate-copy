@@ -3,13 +3,6 @@
    PURPOSE: CSS Reset, Global Typography Defaults, Containers & Grid Layouts
    COVERS: Box-sizing Reset, HTML/Body Defaults, Headings (H1-H6), Container Max-width,
            Section Headers, Responsive Grids (2, 3, 4 cols), Keyframe Animations
-   HOW TO FIND IN VIVA:
-     - Global Reset (*, html, body)  -> search "Modern CSS Reset"
-     - Typography (h1, h2, h3, p)    -> search "Typography Defaults"
-     - Main Page Container (.container)-> search ".container"
-     - Section Headers & Subtitles   -> search ".section-header"
-     - Multi-column Grids (cols-2/3/4)-> search ".grid-cols"
-     - Keyframe Animations (fadeIn)  -> search "@keyframes"
    ========================================================================== */
 
 /* Modern CSS Reset */

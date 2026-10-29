@@ -3,14 +3,6 @@
    PURPOSE: Top Navbar, Mobile Slide-out Drawer, Bottom Tab Bar, Notification Dropdown
    COVERS: Sticky Navbar, Logo Branding, Nav Links, Hamburger Menu Button,
            Mobile Navigation Drawer, Notification Bell & Flyout, Bottom Tab Bar
-   HOW TO FIND IN VIVA:
-     - Top Sticky Navbar             -> search ".navbar"
-     - Logo & Brand Mark             -> search ".brand-logo"
-     - Desktop Nav Links (.nav-link) -> search ".nav-links"
-     - Mobile Hamburger Toggle       -> search ".hamburger-btn"
-     - Mobile Sliding Drawer Menu    -> search ".mobile-drawer"
-     - Notification Bell & Dropdown  -> search ".notification-btn"
-     - Bottom Tab Bar (Mobile PWA)   -> search ".bottom-tab-bar"
    ========================================================================== */
 
 /* --------------------------------------------------------------------------

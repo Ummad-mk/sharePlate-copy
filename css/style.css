@@ -12,18 +12,6 @@
    5. dashboard.css  -> KPIs, forms, dropzones, search toolbars, data tables
    6. landing.css    -> Hero banner, process steps, impact band, footer, coming soon
    7. responsive.css -> Mobile-first media queries and viewport adjustments
-
-   --------------------------------------------------------------------------
-   VIVA EXAM QUICK REFERENCE GUIDE:
-   Teacher: "Where is the CSS code for [Feature X]?"
-   Answer:
-   - Colors, Theme, or Dark Mode?        -> css/variables.css
-   - CSS Reset, H1-H6, or Grid Systems?  -> css/base.css
-   - Navbar, Hamburger, or Mobile Menu?  -> css/navigation.css
-   - Buttons, Food Cards, or Modals?     -> css/components.css
-   - Forms, Stats KPIs, or Admin Tables? -> css/dashboard.css
-   - Hero Banner, Testimonials, Footer?  -> css/landing.css
-   - Mobile Breakpoints & Media Queries? -> css/responsive.css
    ========================================================================== */
 
 /* 1. Design Tokens & CSS Custom Properties */

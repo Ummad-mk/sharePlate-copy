@@ -3,15 +3,6 @@
    PURPOSE: Dashboard Panels, Forms, Data Tables, & Filter Toolbars
    COVERS: Top Header Bar, KPI Summary Cards, Form Controls, Dropzone,
            Filter Search Toolbars, Responsive Data Tables
-   HOW TO FIND IN VIVA:
-     - Dashboard Title & User Role   -> search ".dashboard-topbar"
-     - Role Badges (Donor/NGO/Vol)   -> search ".role-badge"
-     - KPI Metric Cards (Meals saved)-> search ".kpi-grid"
-     - Form Inputs & Validation      -> search ".form-control"
-     - Switch Toggle (Wedding Mode)  -> search ".switch-wrapper"
-     - Photo Upload Dropzone Box     -> search ".dropzone-box"
-     - Search & Filter Category Pills-> search ".filter-toolbar"
-     - Table Records (Claims/Admin)  -> search ".data-table"
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
